@@ -1,6 +1,7 @@
 defmodule TestSelector.HTMLHelpers do
   @moduledoc """
-  Documentation for TestSelector.
+  Documentation for TestSelector. In the examples we're using the UserView as
+  a plain example, this is obviously tradable for any view
   """
 
   alias Phoenix.HTML
