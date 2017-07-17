@@ -47,12 +47,14 @@ defmodule TestSelector.HTMLHelpers do
       ## Examples
 
           iex()> UserCell.test()
-          'test-selector="user-45e6f"'
+          "test-selector=\"user-45e6f\""
 
       In the user show template:
 
-          <%= test() %>
-          #test-selector="user-45e6f"
+          <a href="#" <%= test() %>>
+
+          # results in
+          <a href="#" test-selector="user-45e6f">
       """
       def test do
         test_selector()
@@ -65,12 +67,12 @@ defmodule TestSelector.HTMLHelpers do
       With just a name
 
           iex()> UserCell.test("avatar")
-          'test-selector="user-45e6f-avatar"'
+          "test-selector=\"user-45e6f-avatar\""
 
       With both a name and value
 
           iex()> UserCell.test("id", 13)
-          'test-selector="user-45e6f-id" test-value="13"'
+          "test-selector=\"user-45e6f-id\" test-value=\"13\""
 
       In the user show template:
 
