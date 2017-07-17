@@ -11,8 +11,8 @@ defmodule TestSelector.HTMLHelpers do
 
       def test_selector do
         __MODULE__
-        |> Module.split
-        |> Kernel.--(["Detroit", "Web"])
+        |> Module.split()
+        |> [List.last(modules)]
         |> Enum.join("-")
         |> String.trim_trailing("View")
         |> String.trim_trailing("Cell")
