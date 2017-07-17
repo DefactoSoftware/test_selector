@@ -1,6 +1,7 @@
 defmodule TestSelector.HTMLHelpers do
   @moduledoc """
-  Documentation for TestSelector.
+  Documentation for TestSelector. In the examples we're using the UserView as
+  a plain example, this is obviously tradable for any view
   """
 
   alias Phoenix.HTML
@@ -9,25 +10,78 @@ defmodule TestSelector.HTMLHelpers do
     quote do
       import TestSelector.HTMLHelpers
 
+      @doc """
+      Generates a unique code for an html element
+
+      ## Examples
+
+          iex(1)> UserView.test_selector()
+          "user-45e6f"
+
+      """
       def test_selector do
         __MODULE__
         |> Module.split()
-        |> [List.last(modules)]
+        |> List.last()
+        |> (&List.insert_at([], 0, &1)).()
         |> Enum.join("-")
         |> String.trim_trailing("View")
         |> String.trim_trailing("Cell")
         |> String.downcase()
         |> Kernel.<>("-#{test_hash()}")
       end
+
+      @doc """
+      ## Example
+
+          iex()> UserCell.test_selector("avatar")
+          "user-45e6f-avatar"
+      """
       def test_selector(name) do
         test_selector()
         |> Kernel.<>("-#{name}")
       end
 
+      @doc """
+      The test function will return both the HTML attribute and it's value
+      ## Examples
+
+          iex()> UserCell.test()
+          "test-selector=\"user-45e6f\""
+
+      In the user show template:
+
+          <a href="#" <%= test() %>>
+
+          # results in
+          <a href="#" test-selector="user-45e6f">
+      """
       def test do
         test_selector()
         |> test_attributes()
       end
+      @doc """
+      The test function will return both the HTML attribute and it's value
+      ## Examples
+
+      With just a name
+
+          iex()> UserCell.test("avatar")
+          "test-selector=\"user-45e6f-avatar\""
+
+      With both a name and value
+
+          iex()> UserCell.test("id", 13)
+          "test-selector=\"user-45e6f-id\" test-value=\"13\""
+
+      In the user show template:
+
+          <a href="#" <%= test("foo") %>>
+          <a href="#" <%= test("foo", "bar") %>>
+
+          <a href="#" test-selector="<%= test_selector("foo") %>">
+          <a href="#" test-selector="<%= test_selector("foo") %> test-value="bar">
+      """
       def test(name, value \\ nil) do
         name
         |> test_selector()
