@@ -4,6 +4,8 @@ defmodule TestSelector.HTMLHelpers do
   a plain example, this is obviously tradable for any view
   """
 
+  alias Phoenix.HTML
+
   defmacro __using__(_options) do
     quote do
       import TestSelector.HTMLHelpers
@@ -102,11 +104,11 @@ defmodule TestSelector.HTMLHelpers do
 
 
   def test_attributes(selector) do
-    output_attributes(raw(~s(test-selector="#{selector}")))
+    output_attributes(HTML.raw(~s(test-selector="#{selector}")))
   end
   def test_attributes(selector, nil), do: test_attributes(selector)
   def test_attributes(selector, value) do
-    output_attributes(raw(~s(test-selector="#{selector}" test-value="#{value}")))
+    output_attributes(HTML.raw(~s(test-selector="#{selector}" test-value="#{value}")))
   end
   defp output_attributes(attributes) do
     case Mix.env do
@@ -114,8 +116,4 @@ defmodule TestSelector.HTMLHelpers do
       _ -> attributes
     end
   end
-
-  def raw({:safe, value}), do: {:safe, value}
-  def raw(nil), do: {:safe, ""}
-  def raw(value) when is_binary(value) or is_list(value), do: {:safe, value}
 end
