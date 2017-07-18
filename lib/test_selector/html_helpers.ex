@@ -4,8 +4,6 @@ defmodule TestSelector.HTMLHelpers do
   a plain example, this is obviously tradable for any view
   """
 
-  alias Phoenix.HTML
-
   defmacro __using__(_options) do
     quote do
       import TestSelector.HTMLHelpers
@@ -88,6 +86,13 @@ defmodule TestSelector.HTMLHelpers do
         |> test_attributes(value)
       end
 
+      def test_hash do
+        :md5
+        |> :crypto.hash("#{__MODULE__}")
+        |> Base.encode16(case: :lower)
+        |> String.slice(0, 5)
+      end
+
       defoverridable [
         test_selector: 0,
         test_selector: 1
@@ -95,19 +100,13 @@ defmodule TestSelector.HTMLHelpers do
     end
   end
 
-  def test_hash do
-    :md5
-    |> :crypto.hash("#{__MODULE__}")
-    |> Base.encode16(case: :lower)
-    |> String.slice(0, 5)
-  end
 
   def test_attributes(selector) do
-    output_attributes(HTML.raw(~s(test-selector="#{selector}")))
+    output_attributes(raw(~s(test-selector="#{selector}")))
   end
   def test_attributes(selector, nil), do: test_attributes(selector)
   def test_attributes(selector, value) do
-    output_attributes(HTML.raw(~s(test-selector="#{selector}" test-value="#{value}")))
+    output_attributes(raw(~s(test-selector="#{selector}" test-value="#{value}")))
   end
   defp output_attributes(attributes) do
     case Mix.env do
@@ -115,4 +114,8 @@ defmodule TestSelector.HTMLHelpers do
       _ -> attributes
     end
   end
+
+  def raw({:safe, value}), do: {:safe, value}
+  def raw(nil), do: {:safe, ""}
+  def raw(value) when is_binary(value) or is_list(value), do: {:safe, value}
 end

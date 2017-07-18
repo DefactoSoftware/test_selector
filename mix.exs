@@ -16,7 +16,6 @@ defmodule TestSelector.Mixfile do
 
   defp deps do
     [
-      {:distillery, "~> 1.4", runtime: false},
       {:hound, "~> 1.0"},
       {:ex_doc, "~> 0.14", only: :dev, runtime: false},
       {:phoenix_html, "~> 2.6"}
