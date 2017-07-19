@@ -3,7 +3,7 @@ defmodule TestSelector.Mixfile do
 
   def project do
     [app: :test_selector,
-     version: "0.0.1",
+     version: "0.1.0",
      elixir: "~> 1.4",
      description: "Library to help selecting the right elements in test",
      build_embedded: Mix.env == :test,
