@@ -1,0 +1,22 @@
+# Elixir CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-elixir/ for more details
+version: 2
+jobs:
+  build:
+    working_directory: ~/repo
+    docker:
+      - image: keathley/circle-elixir-node:1.4.2
+        environment:
+          MIX_ENV: test
+    steps:
+      - run: mix local.hex --force
+      - run: mix local.rebar --force
+      - checkout
+      - run:
+          name: Starting PhantomJS
+          command: phantomjs -w --webdriver-loglevel=ERROR
+          background: true
+      - run: mix deps.get
+      - run: mix compile
+      - run: mix test
