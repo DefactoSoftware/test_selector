@@ -11,6 +11,8 @@ jobs:
           MIX_ENV: test
       - image: selenium/standalone-chrome:3.4.0
     steps:
+      - run: mix local.hex --force
+      - run: mix local.rebar --force
       - checkout
       - run: mix deps.get
       - run: mix test
