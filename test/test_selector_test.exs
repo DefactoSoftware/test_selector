@@ -1,4 +1,4 @@
-defmodule TestSelector.HTMLHelpersTest do
+defmodule TestSelector.HTML.HelpersTest do
   use ExUnit.Case
   alias TestSelector.Support.Extra.UserView
 
@@ -15,7 +15,7 @@ defmodule TestSelector.HTMLHelpersTest do
   end
 end
 
-defmodule TestSelector.HelpersTest do
+defmodule TestSelector.Test.HelpersTest do
   use ExUnit.Case
   use Hound.Helpers
 

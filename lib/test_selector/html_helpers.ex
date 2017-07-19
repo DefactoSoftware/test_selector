@@ -1,4 +1,4 @@
-defmodule TestSelector.HTMLHelpers do
+defmodule TestSelector.HTML.Helpers do
   @moduledoc """
   Documentation for TestSelector. In the examples we're using the UserView as
   a plain example, this is obviously tradable for any view
@@ -8,7 +8,7 @@ defmodule TestSelector.HTMLHelpers do
 
   defmacro __using__(_options) do
     quote do
-      import TestSelector.HTMLHelpers
+      import TestSelector.HTML.Helpers
 
       @doc """
       Generates a unique code for an html element
