@@ -1,21 +1,22 @@
-defmodule TestSelector.TestHelpers do
+defmodule TestSelector.Test.Helpers do
   @moduledoc """
   Test Helpers
   """
+
   use Hound.Helpers
 
-  def find_test_element(view_or_cell) do
-    {:safe, test_selector} = view_or_cell.test()
+  def find_test_element(view_module) do
+    {:safe, test_selector} = view_module.test()
     find_element(:xpath, ~s|//*[@#{test_selector}]|)
   end
 
-  def find_test_element(view_or_cell, name) do
-    {:safe, test_selector} = view_or_cell.test(name)
+  def find_test_element(view_module, name) do
+    {:safe, test_selector} = view_module.test(name)
     find_element(:xpath, ~s|//*[@#{test_selector}]|)
   end
 
-  def find_test_element(view_or_cell, name, value) do
-    {:safe, test_selector} = view_or_cell.test(name)
+  def find_test_element(view_module, name, value) do
+    {:safe, test_selector} = view_module.test(name)
     find_element(:xpath, ~s|//*[@#{test_selector}][@test-value="#{value}"]|)
   end
 

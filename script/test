@@ -1,0 +1,5 @@
+#!/bin/bash
+
+MIX_ENV=test mix clean
+MIX_ENV=test mix compile
+MIX_ENV=test mix test

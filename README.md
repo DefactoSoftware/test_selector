@@ -11,7 +11,7 @@ def deps do
 end
 ```
 
-Add TestSelector.HTMLHelpers to your web.ex
+Add TestSelector.HTML.Helpers to your web.ex
 - In phoenix 1.2.0 at `web/web.ex`
 - In phoenix 1.3.0 at `lib/your_project/web/web.ex`
 
@@ -24,7 +24,7 @@ Add somewhere along:
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      use TestSelector.HTMLHelpers
+      use TestSelector.HTML.Helpers
 
       ...
     end

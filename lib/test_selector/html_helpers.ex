@@ -1,4 +1,4 @@
-defmodule TestSelector.HTMLHelpers do
+defmodule TestSelector.HTML.Helpers do
   @moduledoc """
   Documentation for TestSelector. In the examples we're using the UserView as
   a plain example, this is obviously tradable for any view
@@ -8,7 +8,7 @@ defmodule TestSelector.HTMLHelpers do
 
   defmacro __using__(_options) do
     quote do
-      import TestSelector.HTMLHelpers
+      import TestSelector.HTML.Helpers
 
       @doc """
       Generates a unique code for an html element
@@ -88,6 +88,13 @@ defmodule TestSelector.HTMLHelpers do
         |> test_attributes(value)
       end
 
+      def test_hash do
+        :md5
+        |> :crypto.hash("#{__MODULE__}")
+        |> Base.encode16(case: :lower)
+        |> String.slice(0, 5)
+      end
+
       defoverridable [
         test_selector: 0,
         test_selector: 1
@@ -95,12 +102,6 @@ defmodule TestSelector.HTMLHelpers do
     end
   end
 
-  def test_hash do
-    :md5
-    |> :crypto.hash("#{__MODULE__}")
-    |> Base.encode16(case: :lower)
-    |> String.slice(0, 5)
-  end
 
   def test_attributes(selector) do
     output_attributes(HTML.raw(~s(test-selector="#{selector}")))
