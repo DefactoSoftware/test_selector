@@ -8,6 +8,7 @@ defmodule TestSelector.Mixfile do
      description: "Library to help selecting the right elements in test",
      build_embedded: Mix.env == :test,
      start_permanent: Mix.env == :test,
+     package: package(),
      deps: deps()]
   end
 
