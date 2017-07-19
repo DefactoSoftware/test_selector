@@ -15,4 +15,5 @@ jobs:
       - run: mix local.rebar --force
       - checkout
       - run: mix deps.get
+      - run: mix compile
       - run: mix test
