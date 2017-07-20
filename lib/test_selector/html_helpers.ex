@@ -28,7 +28,7 @@ defmodule TestSelector.HTML.Helpers do
         |> String.trim_trailing("View")
         |> String.trim_trailing("Cell")
         |> String.downcase()
-        |> Kernel.<>("-#{test_hash()}")
+        |> Kernel.<>("-#{test_selector_hash()}")
       end
 
       @doc """
@@ -38,12 +38,14 @@ defmodule TestSelector.HTML.Helpers do
           "user-45e6f-avatar"
       """
       def test_selector(name) do
-        test_selector()
-        |> Kernel.<>("-#{name}")
+        case name do
+          nil -> nil
+          _   -> test_selector() <> "-#{name}"
+        end
       end
 
       @doc """
-      The test function will return both the HTML attribute and it's value
+      The test function will return both the HTML attribute and it's value.
       ## Examples
 
           iex()> UserCell.test()
@@ -60,8 +62,9 @@ defmodule TestSelector.HTML.Helpers do
         test_selector()
         |> test_attributes()
       end
+
       @doc """
-      The test function will return both the HTML attribute and it's value
+      The test function will return both the HTML attribute and it's value.
       ## Examples
 
       With just a name
@@ -88,7 +91,10 @@ defmodule TestSelector.HTML.Helpers do
         |> test_attributes(value)
       end
 
-      def test_hash do
+      @doc """
+      It returns the a hash of the module.
+      """
+      def test_selector_hash do
         :md5
         |> :crypto.hash("#{__MODULE__}")
         |> Base.encode16(case: :lower)
@@ -102,14 +108,17 @@ defmodule TestSelector.HTML.Helpers do
     end
   end
 
-
+  @doc false
   def test_attributes(selector) do
     output_attributes(HTML.raw(~s(test-selector="#{selector}")))
   end
+  @doc false
   def test_attributes(selector, nil), do: test_attributes(selector)
+  @doc false
   def test_attributes(selector, value) do
     output_attributes(HTML.raw(~s(test-selector="#{selector}" test-value="#{value}")))
   end
+
   defp output_attributes(attributes) do
     case Mix.env do
       :prod -> ""
