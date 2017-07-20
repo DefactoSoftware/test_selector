@@ -30,4 +30,16 @@ defmodule TestSelector.Test.HelpersTest do
     navigate_to "http://localhost:9090/index.html"
     assert search_test_element(UserView, "does-not-exist") == {:error, :no_such_element}
   end
+
+  test "get element test value using element_test_value/1" do
+    navigate_to "http://localhost:9090/index.html"
+    assert find_element(:class, "foo")
+           |> element_test_value() == "bar"
+  end
+
+  test "test element test value using element_test_value?/2" do
+    navigate_to "http://localhost:9090/index.html"
+    assert find_element(:class, "foo")
+           |> element_test_value?("bar")
+  end
 end
