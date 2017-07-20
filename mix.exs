@@ -3,9 +3,9 @@ defmodule TestSelector.Mixfile do
 
   def project do
     [app: :test_selector,
-     version: "0.1.0",
+     version: "0.2.0",
      elixir: "~> 1.4",
-     description: "Library to help selecting the right elements in test",
+     description: "Library to help selecting the right elements in your tests",
      build_embedded: Mix.env == :test,
      start_permanent: Mix.env == :test,
      package: package(),
@@ -29,7 +29,8 @@ defmodule TestSelector.Mixfile do
       maintainers: ["Matthijs Kuiper", "Marcel Horlings"],
       licenses: ["MIT"],
       links: %{
-        "GitHub" => "https://github.com/HashNuke/hound"
+        "GitHub" => "https://github.com/DefactoSoftware/test_selector",
+        "Docs" => "http://hexdocs.pm/test_selector/"
       }
     ]
   end
