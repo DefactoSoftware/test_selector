@@ -1,30 +1,64 @@
 defmodule TestSelector.Test.Helpers do
   @moduledoc """
-  Test Helpers
+  Test Helpers.
   """
-
   use Hound.Helpers
 
+  @doc """
+  Finds element by test selector on current page.
+  It returns an element that can be used with other element functions.
+  """
   def find_test_element(view_module) do
     {:safe, test_selector} = view_module.test()
-    find_element(:xpath, ~s|//*[@#{test_selector}]|)
+    find_element(:xpath, ~s|#{xpath_pattern(test_selector)}|)
+  end
+  def find_test_element(view_module, selector) do
+    {:safe, test_selector} = view_module.test(selector)
+    find_element(:xpath, ~s|#{xpath_pattern(test_selector)}|)
+  end
+  def find_test_element(view_module, selector, value) do
+    {:safe, test_selector} = view_module.test(selector)
+    find_element(:xpath, ~s|#{xpath_pattern(test_selector, value)}|)
   end
 
-  def find_test_element(view_module, name) do
-    {:safe, test_selector} = view_module.test(name)
-    find_element(:xpath, ~s|//*[@#{test_selector}]|)
+  @doc """
+  Same as `find_test_element`, but returns the a tuple with `{:error, error}` instead of raising.
+  """
+  def search_test_element(view_module) do
+    {:safe, test_selector} = view_module.test()
+    search_element(:xpath, ~s|#{xpath_pattern(test_selector)}|)
+  end
+  def search_test_element(view_module, selector) do
+    {:safe, test_selector} = view_module.test(selector)
+    search_element(:xpath, ~s|#{xpath_pattern(test_selector)}|)
+  end
+  def search_test_element(view_module, selector, value) do
+    {:safe, test_selector} = view_module.test(selector)
+    search_element(:xpath, ~s|#{xpath_pattern(test_selector, value)}|)
   end
 
-  def find_test_element(view_module, name, value) do
-    {:safe, test_selector} = view_module.test(name)
-    find_element(:xpath, ~s|//*[@#{test_selector}][@test-value="#{value}"]|)
-  end
-
-  def test_element_value(%Hound.Element{} = element) do
+  @doc """
+  Get an element `test-value` attribute.
+  It returns `nil` then the `test-value` attribute is not found.
+  """
+  def element_test_value(%Hound.Element{} = element) do
     attribute_value(element, "test-value")
   end
 
-  def test_element_value?(%Hound.Element{} = element, value) do
-    test_element_value(element) == to_string(value)
+  @doc """
+  Check if the element `test-value` attribute matches the given value.
+
+  * It returns `true` if the value matches.
+  * It returns `false` if the value does not match or is not found.
+  """
+  def element_test_value?(%Hound.Element{} = element, value) do
+    element_test_value(element) == to_string(value)
+  end
+
+  # Get test attributes xpath pattern
+  defp xpath_pattern(selector), do: "//*[@#{selector}]"
+  defp xpath_pattern(selector, nil), do: xpath_pattern(selector)
+  defp xpath_pattern(selector, value) do
+    xpath_pattern(selector) <> "[@test-value=\"#{value}\"]"
   end
 end
