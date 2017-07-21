@@ -1,3 +1,6 @@
+[![Hex.pm](https://img.shields.io/hexpm/v/test_selector.svg)](https://hex.pm/packages/test_selector)
+[![CircleCI](https://circleci.com/gh/DefactoSoftware/test_selector/tree/master.svg?style=shield)](https://circleci.com/gh/DefactoSoftware/test_selector)
+
 # TestSelector
 
 A set of Elixir and [Hound](https://github.com/HashNuke/hound) helpers to set/get test selectors to/from elements in a Phoenix app (when `Mix.env == :test`). These selectors are hashed (scoped to the view module they are used in) for accurate selection and "leakage" prevention. See our [Wiki](https://github.com/DefactoSoftware/test_selector/wiki) for examples.
