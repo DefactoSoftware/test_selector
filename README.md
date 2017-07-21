@@ -1,3 +1,6 @@
+[![Hex.pm](https://img.shields.io/hexpm/v/test_selector.svg)](https://hex.pm/packages/test_selector)
+[![CircleCI](https://circleci.com/gh/DefactoSoftware/test_selector/tree/master.svg?style=shield)](https://circleci.com/gh/DefactoSoftware/test_selector)
+
 # TestSelector
 
 This is an testselector that can be used with Phoenix and [Hound](https://github.com/HashNuke/hound).
