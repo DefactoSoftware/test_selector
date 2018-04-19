@@ -34,7 +34,7 @@ defmodule TestSelector.HTML.Helpers do
       @doc """
       ## Example
 
-          iex> UserCell.test_selector("avatar")
+          iex(0)> UserCell.test_selector("avatar")
           "user-45e6f-avatar"
       """
       def test_selector(name) do
@@ -48,7 +48,7 @@ defmodule TestSelector.HTML.Helpers do
       The test function will return both the HTML attribute and it's value.
       ## Examples
 
-          iex> UserCell.test()
+          iex(0)> UserCell.test()
           "test-selector=\"user-45e6f\""
 
       In the user show template:
@@ -69,12 +69,12 @@ defmodule TestSelector.HTML.Helpers do
 
       With just a name
 
-          iex> UserCell.test("avatar")
+          iex(0)> UserCell.test("avatar")
           "test-selector=\"user-45e6f-avatar\""
 
       With both a name and value
 
-          iex> UserCell.test("id", 13)
+          iex(0)> UserCell.test("id", 13)
           "test-selector=\"user-45e6f-id\" test-value=\"13\""
 
       In the user show template:
@@ -113,6 +113,7 @@ defmodule TestSelector.HTML.Helpers do
 
   @doc false
   def test_attributes(selector, nil), do: test_attributes(selector)
+
   def test_attributes(selector, value) do
     output_attributes(HTML.raw(~s(test-selector="#{selector}" test-value="#{value}")))
   end
