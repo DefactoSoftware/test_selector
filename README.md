@@ -52,16 +52,6 @@ end
 
 ## Tests
 
-To run tests you need to install [PhantomJS](http://phantomjs.org/).
-```
-brew install phantomjs
-```
-
-Run the webdriver:
-```
-phantomjs -w
-```
-
 Run the tests:
 ```
 mix test
