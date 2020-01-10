@@ -113,7 +113,6 @@ defmodule TestSelector.HTML.Helpers do
 
   @doc false
   def test_attributes(selector, nil), do: test_attributes(selector)
-  @doc false
   def test_attributes(selector, value) do
     output_attributes(HTML.raw(~s(test-selector="#{selector}" test-value="#{value}")))
   end
