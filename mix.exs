@@ -2,14 +2,16 @@ defmodule TestSelector.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :test_selector,
-     version: "0.2.0",
-     elixir: "~> 1.4",
-     description: "Library to help selecting the right elements in your tests",
-     build_embedded: Mix.env == :test,
-     start_permanent: Mix.env == :test,
-     package: package(),
-     deps: deps()]
+    [
+      app: :test_selector,
+      version: "0.2.0",
+      elixir: "~> 1.4",
+      description: "Library to help selecting the right elements in your tests",
+      build_embedded: Mix.env() == :test,
+      start_permanent: Mix.env() == :test,
+      package: package(),
+      deps: deps()
+    ]
   end
 
   def application do
@@ -18,7 +20,7 @@ defmodule TestSelector.Mixfile do
 
   defp deps do
     [
-      {:ex_doc, "~> 0.14", only: :dev, runtime: false},
+      {:ex_doc, "~> 0.21.2", only: :dev, runtime: false},
       {:hound, "~> 1.0"},
       {:phoenix_html, "~> 2.6"}
     ]
