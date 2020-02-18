@@ -25,14 +25,15 @@ jobs:
       - run: mix compile --warnings-as-errors
       - restore_cache:
           keys:
-            - v1-plt-cache-{{ checksum "mix.lock" }}
-            - v1-plt-cache
+            - v2-plt-cache-{{ checksum "mix.lock" }}
+            - v2-plt-cache
       - run: mix dialyzer --plt
       - run: mix dialyzer --list-unused-filters
       - save_cache:
-          key: v1-plt-cache-{{ checksum "mix.lock" }}
+          key: v2-plt-cache-{{ checksum "mix.lock" }}
           paths:
             - _build
+            - priv/plts
             - ~/.mix
       - run: mix credo
       - run: mix test
