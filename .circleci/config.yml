@@ -11,6 +11,10 @@ jobs:
           MIX_ENV: test
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - v1-dependency-cache-{{ checksum "mix.lock" }}
+            - v1-dependency-cache
       - run: mix local.hex --force
       - run: mix local.rebar --force
       - run:
@@ -19,7 +23,24 @@ jobs:
           background: true
       - run: mix deps.get
       - run: mix compile --warnings-as-errors
+      - restore_cache:
+          keys:
+            - v1-plt-cache-{{ checksum "mix.lock" }}
+            - v1-plt-cache
+      - run: mix dialyzer --plt
+      - run: mix dialyzer --list-unused-filters
+      - save_cache:
+          key: v1-plt-cache-{{ checksum "mix.lock" }}
+          paths:
+            - _build
+            - ~/.mix
       - run: mix credo
       - run: mix test
       - run: mix coveralls.json
       - run: bash <(curl -s https://codecov.io/bash) -t "$CODECOV_KEY"
+      - save_cache:
+          key: v1-dependency-cache-{{ checksum "mix.lock" }}
+          paths:
+            - deps
+            - _build
+            - ~/.mix
