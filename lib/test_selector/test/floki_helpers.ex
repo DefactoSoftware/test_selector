@@ -99,6 +99,35 @@ defmodule TestSelector.Test.FlokiHelpers do
     do: input |> find_test_selectors(selector, value) |> List.first()
 
   @doc """
+  Same as `find_test_selector/2, except it will raise if either none or multiple
+  `test-selectors` are found.
+
+  ## Examples
+
+      iex> text = ~S(<a test-selector="hello" test-value="world"></a><a test-selector="foo" test-value="bar"></a>)
+      iex> find_test_selector!(text, "hello")
+      {"a", [{"test-selector", "hello"}, {"test-value", "world"}], []}
+
+      iex> tree = [{"a", [{"test-selector", "hello"}, {"test-value", "world"}], []}, {"a", [{"test-selector", "foo"}, {"test-value", "bar"}], []}]
+      iex> find_test_selector!(tree, "foo")
+      {"a", [{"test-selector", "foo"}, {"test-value", "bar"}], []}
+
+      iex> text = ~S(<a test-selector="hello" test-value="world"></a>)
+      iex> find_test_selector!(text, "foo")
+      ** (RuntimeError) Multiple elements or none were found
+
+  """
+  @spec find_test_selector!(String.t() | Floki.html_tree(), String.t()) :: Floki.html_tree()
+  def find_test_selector!(input, selector) do
+    element = find_test_selector(input, selector)
+
+    cond do
+      is_list(element) || is_nil(element) -> raise("Multiple elements or none were found")
+      true -> element
+    end
+  end
+
+  @doc """
   Returns a list of test values from given elements.
 
   ## Examples
