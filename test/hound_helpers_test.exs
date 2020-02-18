@@ -10,12 +10,12 @@ defmodule TestSelector.Test.HoundHelpersTest do
 
   test "find the avatar text using find_test_element/2" do
     navigate_to("http://localhost:9090/index.html")
-    assert find_test_element(UserView, "avatar") |> inner_text() == "avatar"
+    assert UserView |> find_test_element("avatar") |> inner_text() == "avatar"
   end
 
   test "find a specific user using find_test_element/3" do
     navigate_to("http://localhost:9090/index.html")
-    assert find_test_element(UserView, "user-list-item", 6) |> inner_text() =~ "right user"
+    assert UserView |> find_test_element("user-list-item", 6) |> inner_text() =~ "right user"
   end
 
   test "search for the avatar element using search_test_element/2" do
@@ -36,14 +36,16 @@ defmodule TestSelector.Test.HoundHelpersTest do
   test "get element test value using element_test_value/1" do
     navigate_to("http://localhost:9090/index.html")
 
-    assert find_element(:class, "foo")
+    assert :class
+           |> find_element("foo")
            |> element_test_value() == "bar"
   end
 
   test "test element test value using element_test_value?/2" do
     navigate_to("http://localhost:9090/index.html")
 
-    assert find_element(:class, "foo")
+    assert :class
+           |> find_element("foo")
            |> element_test_value?("bar")
   end
 end
