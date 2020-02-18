@@ -10,7 +10,7 @@ A set of Elixir and [Hound](https://github.com/HashNuke/hound) helpers to set/ge
 ## Dependencies
 
 - [Hound](https://github.com/HashNuke/hound) v1.x.x
-- [Floki](https://github.com/HashNuke/hound) v0.25.x and higher
+- [Floki](https://github.com/philss/floki) v0.25.x and higher
 
 ## Installation
 
@@ -40,6 +40,7 @@ Add somewhere along:
 ```
 
 **Testing with Floki**
+
 In the tests import the `TestSelector.Test.HoundHelpers` :
 
 ```elixir
@@ -53,7 +54,8 @@ end
 ```
 
 **Testing with Hound**
-In the tests import the `TestSelector.Test.HoundHelpers` :
+
+In the tests import the `TestSelector.Test.HoundHelpers`
 
 ```elixir
 defmodule Project.Web.MyTest do
