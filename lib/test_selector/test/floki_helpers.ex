@@ -53,7 +53,7 @@ defmodule TestSelector.Test.FlokiHelpers do
 
   @doc """
   Same as `find_test_selectors/2`, but instead of returning a list of elements only
-  the first elements is returned.
+  the first element is returned.
 
   ## Examples
 
@@ -76,7 +76,7 @@ defmodule TestSelector.Test.FlokiHelpers do
 
   @doc """
   Same as `find_test_selectors/3`, but instead of returning a list of elements only
-  the first elements is returned.
+  the first element is returned.
 
   ## Examples
 
@@ -140,7 +140,7 @@ defmodule TestSelector.Test.FlokiHelpers do
 
   @doc """
   Same as `find_test_values/2`, but instead of returning a list of elements only
-  the first elements is returned.
+  the first element is returned.
 
   ## Examples
 
