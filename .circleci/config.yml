@@ -6,17 +6,17 @@ jobs:
   build:
     working_directory: ~/repo
     docker:
-      - image: keathley/circle-elixir-node:1.4.2
+      - image: circleci/elixir:1.9.2
         environment:
           MIX_ENV: test
     steps:
+      - checkout
       - run: mix local.hex --force
       - run: mix local.rebar --force
-      - checkout
       - run:
           name: Starting PhantomJS
           command: phantomjs -w --webdriver-loglevel=ERROR
           background: true
       - run: mix deps.get
-      - run: mix compile
+      - run: mix compile --warnings-as-errors
       - run: mix test
