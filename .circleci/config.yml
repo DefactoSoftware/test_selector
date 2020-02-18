@@ -21,3 +21,5 @@ jobs:
       - run: mix compile --warnings-as-errors
       - run: mix credo
       - run: mix test
+      - run: mix coveralls.json
+      - run: bash <(curl -s https://codecov.io/bash) -t "$CODECOV_KEY"
