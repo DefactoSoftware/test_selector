@@ -6,7 +6,7 @@ jobs:
   build:
     working_directory: ~/repo
     docker:
-      - image: circleci/elixir:1.9.2
+      - image: circleci/elixir:1.10.1-node-browsers-legacy
         environment:
           MIX_ENV: test
     steps:
