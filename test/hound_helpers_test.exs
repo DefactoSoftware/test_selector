@@ -1,10 +1,10 @@
-defmodule TestSelector.Test.HelpersTest do
+defmodule TestSelector.Test.HoundHelpersTest do
   use ExUnit.Case
   use Hound.Helpers
   alias TestSelector.Support.UserView
-  import TestSelector.Test.Helpers
+  import TestSelector.Test.HoundHelpers
 
-  doctest TestSelector.HTML.Helpers
+  doctest TestSelector.Test.HoundHelpers
 
   hound_session()
 
