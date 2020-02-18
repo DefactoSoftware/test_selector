@@ -8,6 +8,7 @@ defmodule TestSelector.Mixfile do
       elixir: "~> 1.4",
       description: "Library to help selecting the right elements in your tests",
       test_coverage: [tool: ExCoveralls],
+      dialyzer: [plt_add_apps: [:mix, :ex_unit], check_plt: true],
       build_embedded: Mix.env() == :test,
       start_permanent: Mix.env() == :test,
       package: package(),
@@ -22,6 +23,7 @@ defmodule TestSelector.Mixfile do
   defp deps do
     [
       {:credo, "~> 1.2", only: [:dev, :test], runtime: false},
+      {:dialyxir, "1.0.0-rc.7", only: [:dev, :test], runtime: false},
       {:excoveralls, "~> 0.7", only: :test},
       {:ex_doc, "~> 0.21.2", only: :dev, runtime: false},
       {:floki, "~> 0.25"},
