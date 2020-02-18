@@ -1,4 +1,8 @@
 defmodule TestSelector.Test.FlokiHelpers do
+  @moduledoc """
+  Helpers to find `test-selector` elements in HTML.
+  """
+
   @doc """
   Returns a list of elements by a given `test-selector` inside a string or HTML tree.
 
