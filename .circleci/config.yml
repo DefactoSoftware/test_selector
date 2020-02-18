@@ -19,4 +19,5 @@ jobs:
           background: true
       - run: mix deps.get
       - run: mix compile --warnings-as-errors
+      - run: mix credo
       - run: mix test

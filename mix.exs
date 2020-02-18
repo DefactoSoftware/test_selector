@@ -20,6 +20,7 @@ defmodule TestSelector.Mixfile do
 
   defp deps do
     [
+      {:credo, "~> 1.2", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.21.2", only: :dev, runtime: false},
       {:floki, "~> 0.25"},
       {:hound, "~> 1.0"},
