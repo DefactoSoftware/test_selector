@@ -4,7 +4,7 @@ defmodule TestSelector.Mixfile do
   def project do
     [
       app: :test_selector,
-      version: "0.2.1",
+      version: "0.3.0",
       elixir: "~> 1.4",
       description: "Library to help selecting the right elements in your tests",
       build_embedded: Mix.env() == :test,
@@ -21,6 +21,7 @@ defmodule TestSelector.Mixfile do
   defp deps do
     [
       {:ex_doc, "~> 0.21.2", only: :dev, runtime: false},
+      {:floki, "~> 0.25"},
       {:hound, "~> 1.0"},
       {:phoenix_html, "~> 2.6"}
     ]

@@ -1,4 +1,4 @@
-defmodule TestSelector.Test.Helpers do
+defmodule TestSelector.Test.HoundHelpers do
   @moduledoc """
   Test Helpers.
   """
@@ -12,10 +12,12 @@ defmodule TestSelector.Test.Helpers do
     {:safe, test_selector} = view_module.test()
     find_element(:xpath, ~s|#{xpath_pattern(test_selector)}|)
   end
+
   def find_test_element(view_module, selector) do
     {:safe, test_selector} = view_module.test(selector)
     find_element(:xpath, ~s|#{xpath_pattern(test_selector)}|)
   end
+
   def find_test_element(view_module, selector, value) do
     {:safe, test_selector} = view_module.test(selector)
     find_element(:xpath, ~s|#{xpath_pattern(test_selector, value)}|)
@@ -28,10 +30,12 @@ defmodule TestSelector.Test.Helpers do
     {:safe, test_selector} = view_module.test()
     search_element(:xpath, ~s|#{xpath_pattern(test_selector)}|)
   end
+
   def search_test_element(view_module, selector) do
     {:safe, test_selector} = view_module.test(selector)
     search_element(:xpath, ~s|#{xpath_pattern(test_selector)}|)
   end
+
   def search_test_element(view_module, selector, value) do
     {:safe, test_selector} = view_module.test(selector)
     search_element(:xpath, ~s|#{xpath_pattern(test_selector, value)}|)
@@ -58,6 +62,7 @@ defmodule TestSelector.Test.Helpers do
   # Get test attributes xpath pattern
   defp xpath_pattern(selector), do: "//*[@#{selector}]"
   defp xpath_pattern(selector, nil), do: xpath_pattern(selector)
+
   defp xpath_pattern(selector, value) do
     xpath_pattern(selector) <> "[@test-value=\"#{value}\"]"
   end

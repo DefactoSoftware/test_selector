@@ -10,19 +10,20 @@ A set of Elixir and [Hound](https://github.com/HashNuke/hound) helpers to set/ge
 ## Dependencies
 
 - [Hound](https://github.com/HashNuke/hound) v1.x.x
+- [Floki](https://github.com/HashNuke/hound) v0.25.x and higher
 
 ## Installation
 
 ```elixir
 def deps do
-  [{:test_selector, "~> 0.2.0"}]
+  [{:test_selector, "~> 0.3.0"}]
 end
 ```
 
 Use `TestSelector.HTML.Helpers` to your web.ex.
 
 - In phoenix 1.2.0 at `web/web.ex`
-- In phoenix 1.3.0 and up at `lib/your_project/web/web.ex`
+- In newer Phoenix versions `lib/your_project/web/web.ex`
 
 Add somewhere along:
 
@@ -38,14 +39,28 @@ Add somewhere along:
   end
 ```
 
-In the tests import the `TestSelector.Test.Helpers`:
+**Testing with Floki**
+In the tests import the `TestSelector.Test.HoundHelpers` :
 
 ```elixir
 defmodule Project.Web.MyTest do
   ...
   use Hound.Helpers
 
-  import TestSelector.Test.Helpers
+  import TestSelector.Test.FlokiHelpers
+  ...
+end
+```
+
+**Testing with Hound**
+In the tests import the `TestSelector.Test.HoundHelpers` :
+
+```elixir
+defmodule Project.Web.MyTest do
+  ...
+  use Hound.Helpers
+
+  import TestSelector.Test.HoundHelpers
   ...
 end
 ```
