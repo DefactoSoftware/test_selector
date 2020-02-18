@@ -1,5 +1,5 @@
 Application.start(:inets)
-Code.load_file("test/support/user_view.ex")
+Code.require_file("user_view.ex", "test/support/")
 
 server_root = '#{Path.absname("test/sample_pages")}'
 
