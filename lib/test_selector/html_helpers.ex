@@ -118,10 +118,6 @@ defmodule TestSelector.HTML.Helpers do
     output_attributes(HTML.raw(~s(test-selector="#{selector}" test-value="#{value}")))
   end
 
-  defp output_attributes(attributes) do
-    case Mix.env() do
-      :prod -> ""
-      _ -> attributes
-    end
-  end
+  defp output_attributes(attributes),
+    do: if(Application.get_env(:test_selector, :prod_env), do: "", else: attributes)
 end
