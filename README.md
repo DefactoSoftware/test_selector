@@ -16,7 +16,7 @@ A set of Elixir and [Hound](https://github.com/HashNuke/hound) helpers to set/ge
 
 ```elixir
 def deps do
-  [{:test_selector, "~> 0.3.1"}]
+  [{:test_selector, "~> 0.3.2"}]
 end
 ```
 

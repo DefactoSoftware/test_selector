@@ -4,7 +4,7 @@ defmodule TestSelector.Mixfile do
   def project do
     [
       app: :test_selector,
-      version: "0.3.1",
+      version: "0.3.2",
       elixir: "~> 1.4",
       description: "Library to help selecting the right elements in your tests",
       test_coverage: [tool: ExCoveralls],
