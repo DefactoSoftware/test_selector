@@ -1,10 +1,11 @@
 defmodule TestSelector.Test.FlokiHelpers do
   @moduledoc """
-  Helpers to find `test-selector` elements in HTML.
+  Helpers to find `test-selector` elements in HTML using Floki.
   """
 
   @doc """
   Returns a list of elements by a given `test-selector` inside a string or HTML tree.
+
   It will raise with an error if a conn is supplied as first argument.
 
   ## Examples
@@ -33,7 +34,9 @@ defmodule TestSelector.Test.FlokiHelpers do
     do: Floki.find(html_tree, "[test-selector=#{selector}]")
 
   @doc """
-  Returns a list of elements by a given `test-selector` and `test-value` inside a string or HTML tree.
+  Returns a list of elements by a given `test-selector` and `test-value` inside
+  a string or HTML tree.
+
   It will raise with an error if a conn is supplied as first argument.
 
   ## Examples
@@ -63,6 +66,7 @@ defmodule TestSelector.Test.FlokiHelpers do
   @doc """
   Same as `find_test_selectors/2`, but instead of returning a list of elements only
   the first elements is returned.
+
   It will raise with an error if a conn is supplied as first argument.
 
   ## Examples
@@ -90,6 +94,7 @@ defmodule TestSelector.Test.FlokiHelpers do
   @doc """
   Same as `find_test_selectors/3`, but instead of returning a list of elements only
   the first elements is returned.
+
   It will raise with an error if a conn is supplied as first argument.
 
   ## Examples
