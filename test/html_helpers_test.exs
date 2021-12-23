@@ -9,7 +9,10 @@ defmodule TestSelector.HTML.HelpersTest do
 
   test "#test_selector/1" do
     assert UserView.test_selector("avatar") == UserView.test_selector("avatar")
-    assert UserView.test_selector("avatar") != TestSelector.Support.Extra.UserView.test_selector("avatar")
+
+    assert UserView.test_selector("avatar") !=
+             TestSelector.Support.Extra.UserView.test_selector("avatar")
+
     assert UserView.test_selector("avatar") =~ ~s(user)
     assert UserView.test_selector("avatar") =~ ~s(avatar)
   end
@@ -23,6 +26,7 @@ defmodule TestSelector.HTML.HelpersTest do
   end
 
   test "#test/2 returns a test selector by name and value" do
-    assert {:safe, "test-selector=\"user-8f9ba-foo\" test-value=\"bar\""} = UserView.test("foo", "bar")
+    assert {:safe, "test-selector=\"user-8f9ba-foo\" test-value=\"bar\""} =
+             UserView.test("foo", "bar")
   end
 end

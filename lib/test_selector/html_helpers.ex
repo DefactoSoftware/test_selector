@@ -1,7 +1,9 @@
 defmodule TestSelector.HTML.Helpers do
   @moduledoc """
-  Documentation for TestSelector. In the examples we're using the UserView as
-  a plain example, this is obviously tradable for any view
+  Documentation for TestSelector.
+
+  In the examples we're using the UserView as a plain example, this is
+  obviously tradable for any view
   """
 
   alias Phoenix.HTML
@@ -11,11 +13,11 @@ defmodule TestSelector.HTML.Helpers do
       import TestSelector.HTML.Helpers
 
       @doc """
-      Generates a unique code for an html element
+      Generates a unique code for an HTML element.
 
       ## Examples
 
-          iex(1)> UserView.test_selector()
+          iex> UserView.test_selector()
           "user-45e6f"
 
       """
@@ -32,10 +34,13 @@ defmodule TestSelector.HTML.Helpers do
       end
 
       @doc """
-      ## Example
+      Generates a unique code by appending a custom name for an HTML element.
 
-          iex(0)> UserCell.test_selector("avatar")
+      ## Examples
+
+          iex> UserCell.test_selector("avatar")
           "user-45e6f-avatar"
+
       """
       def test_selector(name) do
         case name do
@@ -46,9 +51,10 @@ defmodule TestSelector.HTML.Helpers do
 
       @doc """
       The test function will return both the HTML attribute and it's value.
+
       ## Examples
 
-          iex(0)> UserCell.test()
+          iex> UserCell.test()
           "test-selector=\"user-45e6f\""
 
       In the user show template:
@@ -57,6 +63,7 @@ defmodule TestSelector.HTML.Helpers do
 
           # results in
           <a href="#" test-selector="user-45e6f">
+
       """
       def test do
         test_selector()
@@ -65,16 +72,17 @@ defmodule TestSelector.HTML.Helpers do
 
       @doc """
       The test function will return both the HTML attribute and it's value.
+
       ## Examples
 
-      With just a name
+      With just a name:
 
-          iex(0)> UserCell.test("avatar")
+          iex> UserCell.test("avatar")
           "test-selector=\"user-45e6f-avatar\""
 
       With both a name and value
 
-          iex(0)> UserCell.test("id", 13)
+          iex> UserCell.test("id", 13)
           "test-selector=\"user-45e6f-id\" test-value=\"13\""
 
       In the user show template:
@@ -84,6 +92,7 @@ defmodule TestSelector.HTML.Helpers do
 
           <a href="#" test-selector="<%= test_selector("foo") %>">
           <a href="#" test-selector="<%= test_selector("foo") %> test-value="bar">
+
       """
       def test(name, value \\ nil) do
         name
@@ -92,7 +101,7 @@ defmodule TestSelector.HTML.Helpers do
       end
 
       @doc """
-      It returns the a hash of the module.
+      Returns the a hash of the module.
       """
       def test_selector_hash do
         :md5

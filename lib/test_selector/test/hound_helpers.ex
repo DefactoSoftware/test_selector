@@ -1,12 +1,13 @@
 defmodule TestSelector.Test.HoundHelpers do
   @moduledoc """
-  Test Helpers.
+  Helpers to find `test-selector` elements in HTML using Hound.
   """
   use Hound.Helpers
 
   @doc """
   Finds element by test selector on current page.
-  It returns an element that can be used with other element functions.
+
+  Returns an element that can be used with other element functions.
   """
   def find_test_element(view_module) do
     {:safe, test_selector} = view_module.test()
@@ -24,7 +25,8 @@ defmodule TestSelector.Test.HoundHelpers do
   end
 
   @doc """
-  Same as `find_test_element`, but returns the a tuple with `{:error, error}` instead of raising.
+  Same as `find_test_element`, but returns the a tuple with `{:error, error}`
+  instead of raising.
   """
   def search_test_element(view_module) do
     {:safe, test_selector} = view_module.test()
@@ -43,7 +45,8 @@ defmodule TestSelector.Test.HoundHelpers do
 
   @doc """
   Get an element `test-value` attribute.
-  It returns `nil` then the `test-value` attribute is not found.
+
+  Returns `nil` then the `test-value` attribute is not found.
   """
   def element_test_value(%Hound.Element{} = element) do
     attribute_value(element, "test-value")
@@ -52,8 +55,8 @@ defmodule TestSelector.Test.HoundHelpers do
   @doc """
   Check if the element `test-value` attribute matches the given value.
 
-  * It returns `true` if the value matches.
-  * It returns `false` if the value does not match or is not found.
+  * Returns `true` if the value matches.
+  * Returns `false` if the value does not match or is not found.
   """
   def element_test_value?(%Hound.Element{} = element, value) do
     element_test_value(element) == to_string(value)
