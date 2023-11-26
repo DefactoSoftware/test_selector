@@ -26,12 +26,13 @@ defmodule TestSelector.Mixfile do
   defp deps do
     [
       {:credo, "~> 1.2", only: [:dev, :test], runtime: false},
-      {:dialyxir, "1.0.0-rc.7", only: [:dev, :test], runtime: false},
+      {:dialyxir, "1.4.2", only: [:dev, :test], runtime: false},
       {:excoveralls, "~> 0.7", only: :test},
       {:ex_doc, ">= 0.0.0", only: :dev},
       {:floki, "~> 0.25"},
       {:hound, "~> 1.0"},
-      {:phoenix_html, "~> 2.6"}
+      {:plug, "~> 1.15"},
+      {:phoenix_html, "~> 3.3"}
     ]
   end
 
