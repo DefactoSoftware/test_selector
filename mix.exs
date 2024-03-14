@@ -30,7 +30,6 @@ defmodule TestSelector.Mixfile do
       {:excoveralls, "~> 0.7", only: :test},
       {:ex_doc, ">= 0.0.0", only: :dev},
       {:floki, "~> 0.25"},
-      {:hound, "~> 1.0", only: :test},
       {:plug, "~> 1.15"},
       {:phoenix_html, "~> 3.3"}
     ]

@@ -7,13 +7,12 @@
 [![License](https://img.shields.io/hexpm/l/test_selector.svg)](https://github.com/DefactoSoftware/test_selector/blob/master/LICENSE.md)
 [![Last Updated](https://img.shields.io/github/last-commit/DefactoSoftware/test_selector.svg)](https://github.com/DefactoSoftware/test_selector/commits/master)
 
-A set of Elixir and [Hound](https://github.com/HashNuke/hound) helpers to set/get test selectors to/from elements in a Phoenix app (when `Mix.env == :test`). These selectors are hashed (scoped to the view module they are used in) for accurate selection and "leakage" prevention. See our [Wiki](https://github.com/DefactoSoftware/test_selector/wiki) for examples.
+A set of Elixir helpers to set/get test selectors to/from elements in a Phoenix app (when `Mix.env == :test`). These selectors are hashed (scoped to the view module they are used in) for accurate selection and "leakage" prevention. See our [Wiki](https://github.com/DefactoSoftware/test_selector/wiki) for examples.
 
 **Why?** Because we prefer reserving classes for styling, and id's have limitations because they have to be unique.
 
 ## Dependencies
 
-- [Hound](https://github.com/HashNuke/hound) v1.x.x
 - [Floki](https://github.com/philss/floki) v0.25.x and higher
 
 ## Installation
@@ -47,43 +46,19 @@ end
 
 **Testing with Floki**
 
-In the tests import the `TestSelector.Test.HoundHelpers`:
+In the tests import the `TestSelector.Test.FlokiHelpers`:
 
 ```elixir
 defmodule Project.Web.MyTest do
   ...
-  use Hound.Helpers
 
   import TestSelector.Test.FlokiHelpers
   ...
 end
 ```
 
-**Testing with Hound**
-
-In the tests import the `TestSelector.Test.HoundHelpers`:
-
-```elixir
-defmodule Project.Web.MyTest do
-  ...
-  use Hound.Helpers
-
-  import TestSelector.Test.HoundHelpers
-  ...
-end
-```
 
 ## Tests
-
-To run tests you need to install [PhantomJS](http://phantomjs.org/).
-```
-brew install phantomjs
-```
-
-Run the webdriver:
-```
-phantomjs -w
-```
 
 Run the tests:
 ```

@@ -128,5 +128,5 @@ defmodule TestSelector.HTML.Helpers do
   end
 
   defp output_attributes(attributes),
-    do: if(Application.get_env(:test_selector, :prod_env), do: "", else: attributes)
+    do: if(Application.get_env(:test_selector, :prod_env), do: nil, else: attributes)
 end
