@@ -20,7 +20,7 @@ A set of Elixir helpers to set/get test selectors to/from elements in a Phoenix 
 ```elixir
 def deps do
   [
-    {:test_selector, "~> 0.3.2"}
+    {:test_selector, "~> 0.3.3"}
   ]
 end
 ```
